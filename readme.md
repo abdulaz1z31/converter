@@ -8,7 +8,7 @@
 1. Клонировать репозиторий:
    ```sh
    git clone https://github.com/abdulaz1z31/converter.git
-   cd converter
+   cd convertor
    ```
 2. Установить зависимости:
    ```sh
