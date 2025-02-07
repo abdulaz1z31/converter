@@ -1,7 +1,9 @@
-import { Router } from "express";
-import { VideoService } from "../service/video.service.js";
+import express from "express";
+import { convert, download } from "../controller/video.controller.js";
+import { upload } from "../service/video.service.js";
+import { checkMovFile } from "../middleware/video.middleware.js";
 
-export const videoRouter = Router();
+export const router = express.Router();
 
-videoRouter.get("/download:filename", VideoService.download);
-videoRouter.post("/upload", VideoService.upload);
+router.post("/convert", upload.single("video"), checkMovFile, convert);
+router.get("/download/:filename", download);

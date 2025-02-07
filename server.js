@@ -1,11 +1,16 @@
 import express from "express";
-import { videoRouter } from "./src/routes/video.routes.js";
+import { router } from "./src/routes/video.routes.js";
 
 const app = express();
-const port = process.env.PORT || 4200;
+const port = process.env.PORT || 3000;
 
-app.use(videoRouter);
+app.use(express.json());
+app.use(router);
+
+app.use((err, req, res, next) => {
+  res.status(500).json({ error: err.message });
+});
 
 app.listen(port, () => {
-  console.log(`Server http://localhost:${port} da ishlamoqda`);
+  console.log(`server running on http://localhost:${port}`);
 });
